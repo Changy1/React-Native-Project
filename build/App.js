@@ -1,22 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import MainContainer from './pages/main/MainContainer';
 class App extends Component {
     render() {
-        return (React.createElement(View, { style: styles.container },
-            React.createElement(Text, { style: styles.title }, "Hello World!")));
+        return (React.createElement(MainContainer, { name: '1' }));
     }
 }
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: 'skyblue'
-    },
-    title: {
-        fontSize: 30,
-        color: 'tomato'
-    }
-});
 export default App;
 //# sourceMappingURL=App.js.map

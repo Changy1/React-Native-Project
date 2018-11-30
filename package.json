@@ -14,15 +14,16 @@
     "watchAndRunAndroid": "concurrently \"yarn run watch\" \"yarn run android\"",
     "buildRunAndroid": "yarn run build && yarn run watchAndRunAndroid ",
     "watchAndRunIOS": "concurrently \"yarn run watch\" \"yarn run ios\"",
-    "buildRunIOS": "yarn run build && yarn run watchAndRunIOS",
+    "buildRunIOS": "yarn run build && yarn run watchAndRunIOS ",
     "watchAndStart": "concurrently \"yarn run watch\" \"yarn run start\"",
-    "buildAndStart": "yarn run build && yarn run watchAndStart"
+    "buildAndStart": "yarn run build && yarn run watchAndStart "
   },
   "dependencies": {
     "@types/react-native-tab-navigator": "^0.3.2",
     "expo": "^31.0.2",
     "react": "16.5.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz"
+    "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz",
+    "react-native-tab-navigator": "^0.3.4"
   },
   "devDependencies": {
     "@types/jest": "^23.3.10",
