@@ -20,10 +20,15 @@
   },
   "dependencies": {
     "@types/react-native-tab-navigator": "^0.3.2",
+    "@types/uuid": "^3.4.4",
     "expo": "^31.0.2",
-    "react": "16.5.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz",
-    "react-native-tab-navigator": "^0.3.4"
+    "lodash": "^4.17.11",
+    "react": "^16.6.3",
+    "react-native": "^0.57.7",
+    "react-native-scripts": "^2.0.1",
+    "react-native-swiper": "^1.5.14",
+    "react-native-tab-navigator": "^0.3.4",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "@types/jest": "^23.3.10",

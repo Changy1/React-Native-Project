@@ -1,24 +1,36 @@
 import React, { Component } from 'react';
 import { View, Text, Image } from 'react-native';
+import styles from './styles';
 import TabNavigator from 'react-native-tab-navigator';
+import HomeContainer from './Home/HomeContainer';
+import uuid from 'uuid';
 const HomeImg = require('../../../assets/image/home.png');
 const HomeImgActive = require('../../../assets/image/homeactive.png');
 const MyImg = require('../../../assets/image/my.png');
 const MyImgActive = require('../../../assets/image/myactive.png');
+const OthersImg = require('../../../assets/image/others.png');
+const OthersImgActive = require('../../../assets/image/othersactive.png');
+const CarImg = require('../../../assets/image/car.png');
+const CarImgActive = require('../../../assets/image/caractive.png');
 export default class MainContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedTab: 'home'
+            selectedTab: 'home',
+            navs: [
+                { id: uuid(), name: 'home', title: '首页', icon: HomeImg, iconActive: HomeImgActive, component: React.createElement(HomeContainer, null) },
+                { id: uuid(), name: 'classify', title: '分类', icon: OthersImg, iconActive: OthersImgActive, component: React.createElement(Text, null, "\u5206\u7C7B") },
+                { id: uuid(), name: 'car', title: '购物车', icon: CarImg, iconActive: CarImgActive, component: React.createElement(Text, null, "\u8D2D\u7269\u8F66") },
+                { id: uuid(), name: 'my', title: '我的', icon: MyImg, iconActive: MyImgActive, component: React.createElement(Text, null, "\u6211\u7684") }
+            ]
         };
     }
+    renderItem() {
+        return this.state.navs.map(item => (React.createElement(TabNavigator.Item, { key: item.id, selected: this.state.selectedTab === item.name, title: item.title, renderIcon: () => React.createElement(Image, { style: styles.icon, source: item.icon }), renderSelectedIcon: () => React.createElement(Image, { style: styles.icon, source: item.iconActive }), onPress: () => this.setState({ selectedTab: item.name }) }, item.component)));
+    }
     render() {
-        return (React.createElement(View, { style: { flex: 1, paddingTop: 50 } },
-            React.createElement(TabNavigator, null,
-                React.createElement(TabNavigator.Item, { selected: this.state.selectedTab === 'home', title: "Home", renderIcon: () => React.createElement(Image, { source: HomeImg }), renderSelectedIcon: () => React.createElement(Image, { source: HomeImgActive }), onPress: () => this.setState({ selectedTab: 'home' }) },
-                    React.createElement(Text, null, "Home")),
-                React.createElement(TabNavigator.Item, { selected: this.state.selectedTab === 'profile', title: "Profile", renderIcon: () => React.createElement(Image, { source: MyImg }), renderSelectedIcon: () => React.createElement(Image, { source: MyImgActive }), onPress: () => this.setState({ selectedTab: 'profile' }) },
-                    React.createElement(Text, null, "Profile")))));
+        return (React.createElement(View, { style: { flex: 1, paddingTop: 20 } },
+            React.createElement(TabNavigator, null, this.renderItem())));
     }
 }
 //# sourceMappingURL=MainContainer.js.map
