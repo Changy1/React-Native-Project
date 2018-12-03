@@ -1,9 +1,9 @@
 import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
-    icon: {
-        width: 25,
-        height: 25
+    Wrapper: {
+        height: 50,
+        width: '100%'
     }
 })
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Image } from 'react-native';
 import styles from './styles';
+import uuid from 'uuid';
 class HomeList extends Component {
     constructor(props) {
         super(props);
@@ -21,12 +22,12 @@ class HomeList extends Component {
         this.getItem();
     }
     renderItem() {
-        return this.state.items.map(item => (React.createElement(View, { key: item.click_num, style: styles.ListItem },
+        return this.state.items.map(item => (React.createElement(View, { key: uuid(), style: styles.ListItem },
             React.createElement(View, { style: styles.ListLeft },
                 React.createElement(Image, { style: styles.ListImg, source: { uri: item.logo_url } })),
             React.createElement(View, { style: styles.ListRight },
                 React.createElement(View, { style: styles.ListRightTop },
-                    React.createElement(Text, { style: styles.ListRightTopOne }, unescape(item.name.replace(/&#x/g, '%u').replace(/;/g, ''))),
+                    React.createElement(Text, { ellipsizeMode: 'tail', numberOfLines: 1, style: styles.ListRightTopOne }, item.name),
                     React.createElement(Text, { style: styles.ListRightTopTwo }, item.effective_time.substring(5))),
                 React.createElement(Text, { style: styles.ListRightCenter }, item.company_name),
                 React.createElement(View, { style: styles.ListRightBottom },

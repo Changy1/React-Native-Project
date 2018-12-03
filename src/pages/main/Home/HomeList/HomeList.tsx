@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text, Image } from 'react-native'
 import styles from './styles'
-
+import uuid from 'uuid'
 
 interface Props {
 }
@@ -29,13 +29,17 @@ class HomeList extends Component<Props,State> {
     }
     renderItem() {
         return this.state.items.map( item => (
-            <View key = {item.click_num} style = {styles.ListItem}>
+            <View key = {uuid()} style = {styles.ListItem}>
                 <View style = {styles.ListLeft}>
                     <Image style = {styles.ListImg} source = {{ uri: item.logo_url}} />
                 </View>
                 <View style = {styles.ListRight}>
                     <View style = {styles.ListRightTop}>
-                        <Text style = {styles.ListRightTopOne}>{unescape(item.name.replace(/&#x/g,'%u').replace(/;/g,''))}</Text>
+                        <Text 
+                            ellipsizeMode = 'tail'
+                            numberOfLines = { 1 }
+                            style = {styles.ListRightTopOne}
+                        >{item.name}</Text>
                         <Text style = {styles.ListRightTopTwo}>{item.effective_time.substring(5)}</Text>
                     </View>
                     <Text style = {styles.ListRightCenter}>{item.company_name}</Text>
