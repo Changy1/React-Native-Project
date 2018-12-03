@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import HomeSwiper from './HomeSwiper/HomeSwiper';
 import HomeCenter from './HomeCenter/HomeCenter';
-import HomeList from './HomeList/HomeList';
+import List from '../../../component/common/List/List';
 import { View, ScrollView } from 'react-native';
 class HomeContainer extends Component {
     render() {
@@ -9,7 +9,7 @@ class HomeContainer extends Component {
             React.createElement(View, { style: { flex: 1, backgroundColor: '#f5f5f5' } },
                 React.createElement(HomeSwiper, null),
                 React.createElement(HomeCenter, null),
-                React.createElement(HomeList, null))));
+                React.createElement(List, null))));
     }
 }
 export default HomeContainer;

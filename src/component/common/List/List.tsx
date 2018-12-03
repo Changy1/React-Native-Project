@@ -8,7 +8,7 @@ interface Props {
 interface State {
     items: Array<any>
 }
-class HomeList extends Component<Props,State> {
+class List extends Component<Props,State> {
     constructor(props: any) {
         super(props)
         this.state = {
@@ -37,7 +37,7 @@ class HomeList extends Component<Props,State> {
                     <View style = {styles.ListRightTop}>
                         <Text 
                             ellipsizeMode = 'tail'
-                            numberOfLines = { 1 }
+                            numberOfLines = { 1 }  
                             style = {styles.ListRightTopOne}
                         >{item.name}</Text>
                         <Text style = {styles.ListRightTopTwo}>{item.effective_time.substring(5)}</Text>
@@ -61,4 +61,4 @@ class HomeList extends Component<Props,State> {
     }
 } 
 
-export default HomeList
+export default List

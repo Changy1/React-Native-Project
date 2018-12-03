@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import HomeSwiper from './HomeSwiper/HomeSwiper'
 import HomeCenter from './HomeCenter/HomeCenter'
-import HomeList from './HomeList/HomeList'
+import List from '../../../component/common/List/List'
 import { View, ScrollView } from 'react-native'
 
 class HomeContainer extends Component {
@@ -11,7 +11,7 @@ class HomeContainer extends Component {
                 <View style = {{  flex:1 , backgroundColor: '#f5f5f5'}}>
                     <HomeSwiper />
                     <HomeCenter />
-                    <HomeList />
+                    <List />
                 </View>
             </ScrollView>
         )

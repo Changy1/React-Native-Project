@@ -24,7 +24,7 @@ export default class MainContainer extends Component {
         };
     }
     renderItem() {
-        return this.state.navs.map(item => (React.createElement(TabNavigator.Item, { key: item.id, selected: this.state.selectedTab === item.name, title: item.title, renderIcon: () => React.createElement(Image, { style: styles.icon, source: item.icon }), renderSelectedIcon: () => React.createElement(Image, { style: styles.icon, source: item.iconActive }), onPress: () => this.setState({ selectedTab: item.name }) }, item.component)));
+        return this.state.navs.map(item => (React.createElement(TabNavigator.Item, { selectedTitleStyle: { color: '#ff464e' }, key: item.id, selected: this.state.selectedTab === item.name, title: item.title, renderIcon: () => React.createElement(Image, { style: styles.icon, source: item.icon }), renderSelectedIcon: () => React.createElement(Image, { style: styles.icon, source: item.iconActive }), onPress: () => this.setState({ selectedTab: item.name }) }, item.component)));
     }
     render() {
         return (React.createElement(View, { style: { flex: 1, paddingTop: 20 } },

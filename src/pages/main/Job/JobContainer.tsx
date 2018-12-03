@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View, ScrollView } from 'react-native'
 import JobHeader from './JobHeader/JobHeader'
+import List from '../../../component/common/List/List'
 
 class JobContainer extends Component {
     render () {
@@ -8,6 +9,7 @@ class JobContainer extends Component {
             <ScrollView>
                 <View style = {{ flex: 1 }}>
                     <JobHeader />
+                    <List />
                 </View>
             </ScrollView>
         )

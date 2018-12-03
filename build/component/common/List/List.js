@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, Image } from 'react-native';
 import styles from './styles';
 import uuid from 'uuid';
-class HomeList extends Component {
+class List extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -46,5 +46,5 @@ class HomeList extends Component {
         return (React.createElement(View, { style: styles.Wrapper }, this.renderItem()));
     }
 }
-export default HomeList;
-//# sourceMappingURL=HomeList.js.map
+export default List;
+//# sourceMappingURL=List.js.map

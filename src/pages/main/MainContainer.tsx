@@ -36,6 +36,7 @@ export default class MainContainer extends Component<Props, State> {
     renderItem () {
         return this.state.navs.map( item => (
             <TabNavigator.Item
+                selectedTitleStyle = {{ color: '#ff464e' }}
                 key = {item.id}
                 selected={this.state.selectedTab === item.name }
                 title={ item.title }
