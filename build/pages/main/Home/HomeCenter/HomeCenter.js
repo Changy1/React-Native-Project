@@ -1,8 +1,15 @@
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
 import React, { Component } from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, TouchableHighlight } from 'react-native';
 import styles from './styles';
 import uuid from 'uuid';
-class HomeCenter extends Component {
+import { inject, observer } from 'mobx-react';
+let HomeCenter = class HomeCenter extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -16,12 +23,24 @@ class HomeCenter extends Component {
     }
     renderItem() {
         return this.state.navs.map(item => (React.createElement(View, { key: item.id, style: styles.CenterItem },
-            React.createElement(Image, { style: styles.CenterImg, source: { uri: item.imgUrl } }),
-            React.createElement(Text, { style: styles.CenterText }, item.title))));
+            React.createElement(TouchableHighlight, { onPress: () => {
+                    // 调用store里面navigation的navigate方法
+                    // 第一个参数可以规定跳转到哪个屏幕，第二个参数是改变这个navigation的title。然后List就可以拿这个title
+                    this.props.store.Navigation.navigation.navigate('List', {
+                        title: item.title
+                    });
+                } },
+                React.createElement(View, { style: styles.CenterItemTwo },
+                    React.createElement(Image, { style: styles.CenterImg, source: { uri: item.imgUrl } }),
+                    React.createElement(Text, { style: styles.CenterText }, item.title))))));
     }
     render() {
         return (React.createElement(View, { style: styles.Wrapper }, this.renderItem()));
     }
-}
+};
+HomeCenter = __decorate([
+    inject('store'),
+    observer
+], HomeCenter);
 export default HomeCenter;
 //# sourceMappingURL=HomeCenter.js.map

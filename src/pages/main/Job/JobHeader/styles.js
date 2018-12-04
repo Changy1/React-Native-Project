@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
         height: '100%'
     },
     JobHeaderItem: {
+        backgroundColor: '#fff',
         justifyContent: 'center',
         height: '100%',
         borderRightWidth: 1,

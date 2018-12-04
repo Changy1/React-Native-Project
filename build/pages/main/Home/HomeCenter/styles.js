@@ -15,6 +15,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         width: '25%',
     },
+    CenterItemTwo: {
+        justifyContent: 'space-around',
+        alignItems: 'center',
+    },
     CenterImg: {
         width: 48,
         height: 48,
