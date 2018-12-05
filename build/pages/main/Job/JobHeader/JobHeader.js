@@ -16,12 +16,11 @@ class JobHeader extends Component {
     }
     renderItem() {
         return this.state.navs.map(item => (React.createElement(View, { key: item.id, style: styles.JobHeaderItem },
-            React.createElement(Text, null, item.title))));
+            React.createElement(Text, { style: styles.JobHeaderText }, item.title))));
     }
     render() {
         return (React.createElement(View, { style: styles.Wrapper },
-            React.createElement(View, { style: styles.JobHeaderLeft }, this.renderItem()),
-            React.createElement(View, { style: styles.JobHeaderRight })));
+            React.createElement(View, { style: styles.JobHeaderLeft }, this.renderItem())));
     }
 }
 export default JobHeader;

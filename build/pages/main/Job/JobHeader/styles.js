@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     JobHeaderLeft: {
-        width: '90%',
+        width: '100%',
         height: '100%',
         flexDirection: 'row',
         justifyContent: 'space-around',
@@ -17,10 +17,6 @@ const styles = StyleSheet.create({
     JobHeaderText: {
         color: '#666',
         fontSize: 15
-    },
-    JobHeaderRight: {
-        width: '10%',
-        height: '100%'
     },
     JobHeaderItem: {
         backgroundColor: '#fff',

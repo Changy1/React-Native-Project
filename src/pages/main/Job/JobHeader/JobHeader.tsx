@@ -24,7 +24,7 @@ class JobHeader extends Component<Props,State> {
     renderItem () {
         return this.state.navs.map( item => (
             <View key = {item.id} style = {styles.JobHeaderItem}>
-                <Text>{ item.title }</Text>
+                <Text style = {styles.JobHeaderText}>{ item.title }</Text>
             </View>
         ))
     }
@@ -34,7 +34,6 @@ class JobHeader extends Component<Props,State> {
                 <View style = {styles.JobHeaderLeft}>
                     { this.renderItem() }
                 </View>
-                <View style = {styles.JobHeaderRight}></View>
             </View>
         )
     }

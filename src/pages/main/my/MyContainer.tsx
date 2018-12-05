@@ -78,6 +78,7 @@ export default class MyContainer extends React.Component<Props,State> {
                     backgroundColor: 'transparent',
                     flexDirection: 'row',
                   }}>
+                  {/* 前置后置切换 */}
                   <TouchableOpacity
                     style={{
                       flex: 0.1,
@@ -96,6 +97,7 @@ export default class MyContainer extends React.Component<Props,State> {
                       {' '}Flip{' '}
                     </Text>
                   </TouchableOpacity>
+                  {/* 取消拍照 */}
                   <TouchableOpacity
                     style={{
                       flex: 0.1,
@@ -112,6 +114,7 @@ export default class MyContainer extends React.Component<Props,State> {
                         取消拍照
                     </Text>
                   </TouchableOpacity>
+                  {/* 拍照 */}
                   <TouchableOpacity
                     style={{
                       flex: 0.1,
