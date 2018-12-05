@@ -39,7 +39,7 @@ export default class MyContainer extends React.Component<Props,State> {
             hasCameraPermission: null,
             type: Camera.Constants.Type.back,
             isShow: false,
-            url: ''
+            url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1544031792517&di=c51ad67b2a574424803111eb3592bd17&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201608%2F16%2F20160816210110_KXSJm.jpeg'
         }
     }
 
@@ -66,12 +66,14 @@ export default class MyContainer extends React.Component<Props,State> {
           </Button>
           { 
             !this.state.isShow && (
-              <Image source = {{uri: this.state.url}}/>
+              <Image style = {{height: 400, width: 300, marginLeft: 30, marginTop: 50}} source = {{uri: this.state.url}}/>
             ) 
           }
           {
             this.state.isShow && (
-              <Camera style={{ flex: 1 }} type={this.state.type}>
+              <Camera
+              ref={(ref: any) => { this.camera = ref; }}
+              style={{ flex: 1 }} type={this.state.type}>
                 <View
                   style={{
                     flex: 1,
@@ -123,9 +125,8 @@ export default class MyContainer extends React.Component<Props,State> {
                     }}
                     onPress={async() => {
                       let data = await this.camera.takePictureAsync()
-                      alert(JSON.stringify(data))
                       this.setState({
-                        url: JSON.stringify(data),
+                        url: data.uri,
                         isShow: !this.state.isShow
                       })
                     }}>

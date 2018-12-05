@@ -4,6 +4,21 @@ import styles from './styles';
 class List extends Component {
     constructor(props) {
         super(props);
+        this._onEndReached = () => {
+            this.setState({
+                refreshing: true
+            }, () => {
+                this.getItem(true);
+            });
+        };
+        this._onRefresh = () => {
+            this.setState({
+                refreshing: true
+            }, () => {
+                this.getItem(false);
+            });
+        };
+        this._keyExtractor = (item) => item.uuid;
         this.state = {
             items: [],
             refreshing: false
@@ -36,8 +51,8 @@ class List extends Component {
     // this.state.items.map((item,index) => )
     // map方法是数组的方法，他第一个参数是数组内的每一个数值，第二个参数才是index
     renderItem(prop) {
-        let { item, index } = prop;
-        return (React.createElement(View, { key: index, style: styles.ListItem },
+        let { item } = prop;
+        return (React.createElement(View, { style: styles.ListItem },
             React.createElement(View, { style: styles.ListLeft },
                 React.createElement(Image, { style: styles.ListImg, source: { uri: item.logo_url } })),
             React.createElement(View, { style: styles.ListRight },
@@ -57,17 +72,6 @@ class List extends Component {
                         item.maxsalary,
                         "/\u5929")))));
     }
-    _onEndReached() {
-        alert(111);
-        this.getItem(true);
-    }
-    _onRefresh() {
-        this.setState({
-            refreshing: true
-        }, () => {
-            this.getItem(false);
-        });
-    }
     render() {
         return (React.createElement(View, { style: styles.Wrapper },
             React.createElement(FlatList
@@ -83,8 +87,10 @@ class List extends Component {
                 onEndReached: this._onEndReached, 
                 //  这是下拉刷新的方法
                 onRefresh: this._onRefresh, 
-                //  下拉刷新的状态
-                refreshing: this.state.refreshing })));
+                //  刷新loding图
+                refreshing: this.state.refreshing, 
+                //  这里是一个函数，第一个参数是item，第二个是index，item就是每一条数据，被抽离出来
+                keyExtractor: this._keyExtractor })));
     }
 }
 export default List;

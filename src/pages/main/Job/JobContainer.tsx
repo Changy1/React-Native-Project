@@ -6,12 +6,10 @@ import List from '../../../component/common/List/List'
 class JobContainer extends Component {
     render () {
         return (
-            <ScrollView>
                 <View style = {{ flex: 1 }}>
                     <JobHeader />
                     <List />
                 </View>
-            </ScrollView>
         )
     }
 }

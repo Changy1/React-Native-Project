@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, Image, FlatList } from 'react-native'
 import styles from './styles'
-import uuid from 'uuid'
 
 interface Props {
 }
@@ -44,9 +43,9 @@ class List extends Component<Props,State> {
     // this.state.items.map((item,index) => )
     // map方法是数组的方法，他第一个参数是数组内的每一个数值，第二个参数才是index
     renderItem(prop: any) {
-        let { item, index } = prop
+        let { item } = prop
         return(
-            <View key = {index} style = {styles.ListItem}>
+            <View style = {styles.ListItem}>
                 <View style = {styles.ListLeft}>
                     <Image style = {styles.ListImg} source = {{ uri: item.logo_url}} />
                 </View>
@@ -69,20 +68,25 @@ class List extends Component<Props,State> {
             </View>
         )
     }
-    _onEndReached() {
-        alert(111)
-        this.getItem (true)
+    _onEndReached = () => {
+        this.setState({
+            refreshing: true
+        }, () => {
+            this.getItem(true)
+        })
     }
-    _onRefresh() {
+    _onRefresh = () => {
         this.setState({
             refreshing: true
         }, () => {
             this.getItem(false)
         })
     }
+    _keyExtractor = (item:any) => item.uuid;
     render () {
         return(
             <View style = {styles.Wrapper}>
+                {/* 这里有因为有个padding和margin而滚动部分是flatlist，所以一出现就有两个白条 */}
                 <FlatList
                 //  将数据放在这里
                     data = {this.state.items}
@@ -94,8 +98,12 @@ class List extends Component<Props,State> {
                     onEndReached = {this._onEndReached}
                 //  这是下拉刷新的方法
                     onRefresh = {this._onRefresh}
-                //  下拉刷新的状态
+                //  刷新loding图
                     refreshing = {this.state.refreshing}
+                //  这里是一个函数，第一个参数是item，第二个是index，item就是每一条数据，被抽离出来
+                    keyExtractor = {this._keyExtractor}
+                //  优化
+                    /* getItemLayout = */
                 >
                 </FlatList>
             </View>

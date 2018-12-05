@@ -34,7 +34,7 @@ export default class MyContainer extends React.Component {
             hasCameraPermission: null,
             type: Camera.Constants.Type.back,
             isShow: false,
-            url: ''
+            url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1544031792517&di=c51ad67b2a574424803111eb3592bd17&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201608%2F16%2F20160816210110_KXSJm.jpeg'
         };
     }
     componentDidMount() {
@@ -56,8 +56,8 @@ export default class MyContainer extends React.Component {
                 React.createElement(Button, { title: '\u62CD\u7167', onPress: () => {
                         this.setState({ isShow: !this.state.isShow });
                     } }),
-                !this.state.isShow && (React.createElement(Image, { source: { uri: this.state.url } })),
-                this.state.isShow && (React.createElement(Camera, { style: { flex: 1 }, type: this.state.type },
+                !this.state.isShow && (React.createElement(Image, { style: { height: 400, width: 300, marginLeft: 30, marginTop: 50 }, source: { uri: this.state.url } })),
+                this.state.isShow && (React.createElement(Camera, { ref: (ref) => { this.camera = ref; }, style: { flex: 1 }, type: this.state.type },
                     React.createElement(View, { style: {
                             flex: 1,
                             backgroundColor: 'transparent',
@@ -94,9 +94,8 @@ export default class MyContainer extends React.Component {
                                 alignItems: 'center',
                             }, onPress: () => __awaiter(this, void 0, void 0, function* () {
                                 let data = yield this.camera.takePictureAsync();
-                                alert(JSON.stringify(data));
                                 this.setState({
-                                    url: JSON.stringify(data),
+                                    url: data.uri,
                                     isShow: !this.state.isShow
                                 });
                             }) },

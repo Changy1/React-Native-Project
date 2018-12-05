@@ -3,12 +3,12 @@ const styles = StyleSheet.create({
     Wrapper: {
         width: '100%',
         paddingTop: 7,
-        paddingLeft: 18,
-        paddingRight: 18,
         marginTop: 10,
         backgroundColor: '#fff'
     },
     ListItem: {
+        paddingLeft: 18,
+        paddingRight: 18,
         borderBottomColor: '#ebeff2',
         borderBottomWidth: 1,
         width: '100%',
