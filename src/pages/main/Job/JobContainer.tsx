@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, ScrollView } from 'react-native'
+import { View } from 'react-native'
 import JobHeader from './JobHeader/JobHeader'
 import List from '../../../component/common/List/List'
 
